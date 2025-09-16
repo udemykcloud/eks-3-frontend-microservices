@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-3
+  labels:
+    app: frontend-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-3
+  template:
+    metadata:
+      labels:
+        app: frontend-3
+    spec:
+      containers:
+      - name: frontend-3
+        image: nginx:alpine
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: frontend-3-html
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-3-html
+data:
+  index.html: |
+    <html>
+    <head><title>Frontend 3</title></head>
+    <body style="font-family: Arial; text-align:center; margin-top:50px;">
+      <h1>🌟 Frontend 3 on EKS</h1>
+      <p>Deployed using Argo CD</p>
+    </body>
+    </html>
