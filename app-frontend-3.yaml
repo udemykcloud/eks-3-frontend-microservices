@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-username>/eks-3-frontend-microservices.git
+    repoURL: https://github.com/udemykcloud/eks-3-frontend-microservices.git
     targetRevision: main
     path: frontend-3
   destination:
